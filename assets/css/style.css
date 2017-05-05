@@ -5,6 +5,12 @@ body {
 	/*width: 800px;*/
 	max-width: 96%;
 	margin: 0 auto;
+
+	background-image: url("assets/images/background_img/cityscape.png");
+
+    
+
+
 }
 a {
 	color: #69C;
