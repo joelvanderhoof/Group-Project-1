@@ -1,112 +1,66 @@
-body {
-	background: #fff;
-	color: #666;
-	font: 90%/180% Arial, Helvetica, sans-serif;
-	/*width: 800px;*/
-	max-width: 96%;
-	margin: 0 auto;
-
-	background-image: url("../images/background_img/cityscape.png");
-
-
-    
-
-
-}
-a {
-	color: #69C;
-	text-decoration: none;
-}
-a:hover {
-	color: #F60;
-}
-h1 {
-	font: 1.7em;
-	line-height: 110%;
-	color: #000;
-}
-p {
-	margin: 0 0 20px;
+body, html {
+  height: 100%;
+  margin: 0;
+  font: 400 15px/1.8 "Lato", sans-serif;
+  color: #777;
 }
 
+.bgimg-1, .bgimg-2, .bgimg-3 {
+  position: relative;
+  opacity: 0.65;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 
-input {
-	outline: none;
 }
-input[type=search] {
-	-webkit-appearance: textfield;
-	-webkit-box-sizing: content-box;
-	font-family: inherit;
-	font-size: 100%;
-}
-input::-webkit-search-decoration,
-input::-webkit-search-cancel-button {
-	display: none; 
-}
-
-
-input[type=search] {
-	background: #ededed url(http://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
-	border: solid 1px #ccc;
-	padding: 9px 10px 9px 32px;
-	width: 55px;
-	
-	-webkit-border-radius: 10em;
-	-moz-border-radius: 10em;
-	border-radius: 10em;
-	
-	-webkit-transition: all .5s;
-	-moz-transition: all .5s;
-	transition: all .5s;
-	/*opacity: 0.75;*/
-}
-input[type=search]:focus {
-	width: 130px;
-	background-color: #fff;
-	border-color: #fff;
-	/*opacity: 0.5;*/
-	
-	-webkit-box-shadow: 0 0 5px rgba(109,207,246,.5);
-	-moz-box-shadow: 0 0 5px rgba(109,207,246,.5);
-	box-shadow: 0 0 5px rgba(109,207,246,.5);
+.bgimg-1 {
+  background-image: url("../images/pizza.jpg");
+  min-height: 100%;
 }
 
-
-input:-moz-placeholder {
-	color: #999;
-}
-input::-webkit-input-placeholder {
-	color: #999;
+.bgimg-2 {
+  background-image: url("../images/hotpot.jpg");
+  min-height: 400px;
 }
 
-/* Demo 2 */
-#demo-2 input[type=search] {
-	width: 80px;
-	height: 80px; 
-	padding-left: 10px;
-	color: transparent;
-	cursor: pointer;
-	/*opacity: 0.5;*/
-}
-#demo-2 input[type=search]:hover {
-	background-color: #fff;
-	/*opacity: 0.5;*/
-}
-#demo-2 input[type=search]:focus {
-	width: 300px;
-	padding-left: 32px;
-	color: #000;
-	background-color: #fff;
-	/*opacity: 0.5;*/
-	cursor: auto;
-}
-#demo-2 input:-moz-placeholder {
-	color: transparent;
-}
-#demo-2 input::-webkit-input-placeholder {
-	color: transparent;
+.bgimg-3 {
+  background-image: url("../images/sushi.jpg");
+  min-height: 400px;
 }
 
-#logo{
-	margin: 0 auto; 
+/*.bgimg-4 {
+  background-image: url("../images/hotdogs.jpg");
+  min-height: 400px;
+}*/
+
+.caption {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  text-align: center;
+  color: #000;
+}
+
+.caption span.border {
+  background-color: #111;
+  color: #fff;
+  padding: 18px;
+  font-size: 25px;
+  letter-spacing: 10px;
+}
+
+h3 {
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  font: 20px "Lato", sans-serif;
+  color: #111;
+}
+
+/* Turn off parallax scrolling for tablets and phones */
+@media only screen and (max-device-width: 1024px) {
+    .bgimg-1, .bgimg-2, .bgimg-3 {
+        background-attachment: scroll;
+    }
 }
