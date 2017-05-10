@@ -125,7 +125,12 @@ button.enter-button{
 
 }
 
+.grey{
+    background-color:#ccc;
+}
 
+.filter-button:focus { outline-style: none;
+ }
 
 
 /*Search Bar CSS*/
@@ -322,6 +327,8 @@ button.enter-button{
                 font-size: 25px;
                 display:none;
                 color:#ffffff;
+                border-radius: 20px; 
+                background-color: rgba(0,0,0,0.8);
             }
 
             ::-webkit-input-placeholder { /* Chrome/Opera/Safari */

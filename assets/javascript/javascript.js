@@ -31,3 +31,8 @@ $(obj).find('.result-container').fadeIn(100);
 
         evt.preventDefault();
 }
+
+// Hover Button Toggle
+$('button[type="submit"]').click(function(){
+  $(this).toggleClass('grey');
+});
