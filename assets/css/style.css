@@ -73,10 +73,6 @@ button.enter-button{
 
 /*Search Bar CSS*/
 
-html,body {height: 100%;}
-body {padding: 0px; margin:0px; 
-}
-
 .search-wrapper {
     position: absolute;
     -webkit-transform: translate(-50%, -50%);
@@ -105,7 +101,7 @@ body {padding: 0px; margin:0px;
 .search-wrapper.active .input-holder {
     border-radius: 50px;
     width:450px;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.8);
     -webkit-transition: all .5s cubic-bezier(0.000, 0.105, 0.035, 1.570);
     -moz-transition: all .5s cubic-bezier(0.000, 0.105, 0.035, 1.570);
     transition: all .5s cubic-bezier(0.000, 0.105, 0.035, 1.570);
