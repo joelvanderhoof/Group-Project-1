@@ -125,7 +125,12 @@ button.enter-button{
 
 }
 
+.grey{
+    background-color:#ccc;
+}
 
+.filter-button:focus { outline-style: none;
+ }
 
 
 /*Search Bar CSS*/
