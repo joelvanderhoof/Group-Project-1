@@ -31,7 +31,7 @@ app.post("/yelp", function (req, res) {
 
 	var queryURL = "https://api.yelp.com/v3/businesses/search?";
 	var options = { 
-		method: "GET",
+		method: "HTTP GET",
 		url: queryURL,
 		qs: req.body,
 		headers: { 
