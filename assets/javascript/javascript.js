@@ -17,9 +17,9 @@ function searchToggle(obj, evt){
 function submitFn(obj, evt){
     value = $(obj).find('.search-input').val().trim();
 
-    _html = "Yup yup! Your search text sounds like this: ";
+    _html = "Searching!...";
           if(!value.length){
-            _html = "Yup yup! Add some text friend :D";
+            _html = "Please input something, I'm ready to start searching!";
 }
     
     else{
