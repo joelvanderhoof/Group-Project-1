@@ -259,6 +259,19 @@ body {padding: 0px; margin:0px;
                 color:#ffffff;
             }
 
+            ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+                color: #fff;
+            }   
+            ::-moz-placeholder { /* Firefox 19+ */
+                color: #fff;
+            }
+            :-ms-input-placeholder { /* IE 10+ */
+                color: #fff;
+            }
+            :-moz-placeholder { /* Firefox 18- */
+                 color: #fff;
+            }
+
 
             @media screen and (max-width: 560px) {
                 .search-wrapper.active .input-holder {width:200px;}
