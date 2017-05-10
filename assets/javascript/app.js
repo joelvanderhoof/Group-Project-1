@@ -23,7 +23,7 @@ var reqObject = JSON.stringify({ "term": "coffee", "latitude": "33.645068", "lon
 
 //test Yelp API call through server
 var settings = {
-  "url": "http://localhost:3000/yelp",
+  "url": "https://group-project-1.herokuapp.com/yelp",
   "method": "POST",
   "headers": {
     "content-type": "application/json; charset=UTF-8",
