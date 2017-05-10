@@ -59,6 +59,18 @@ h3 {
   color: #111;
 }
 
+/*Restaurant Ambiance*/
+
+button.filter-button{
+    margin: 10px;
+    width: 130px; 
+}
+
+button.enter-button{
+    margin: 10px;
+    width: 597px;
+}
+
 /*Search Bar CSS*/
 
 html,body {height: 100%;}
