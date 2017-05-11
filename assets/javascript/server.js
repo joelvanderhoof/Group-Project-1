@@ -17,11 +17,17 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 //Serves the root directory relative to the directory that the express app is run from
 app.use(express.static(path.join(__dirname, "/")));
 
+// app.use(function(req, res, next) {
+// 	res.header("Access-Control-Allow-Origin", "*");
+// 	res.header("Access-Control-Allow-Method", "GET, PUT, POST, DELETE");
+// 	res.header("Access-Control-Allow-Headers", "Content-Type, Origin, Accept");
+// 	next();
+// });
+
 app.use(function(req, res, next) {
-	req.setHeader("Access-Control-Allow-Origin", "*");
-	req.setHeader("Access-Control-Allow-Method", "*");
-	req.setHeader("Access-Control-Allow-Headers", "*");
-	next();
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
 });
 
 app.listen(port, function () {
@@ -62,25 +68,21 @@ app.post("/green", function (req, res) {
 	var options = { 
 		method: "GET",
 		url: queryURL,
-		//qs: req.body.qs,
-		// headers: { 
-	 //   		//"postman-token": "d4acc441-7e71-ad84-dddb-e88e563ba45b",
-	 //     	"cache-control": "no-cache",
-	 //     	"authorization": "Bearer S7LImio1bL-jYfN1zzz6z6iKmrFE95eCDH9nQodFeB2Ms2vW4UYYaBTX256MW0B52uqk1_N1w4F2FunzAR89rXa6-3L0r1TCr7bfsUKtAQtApnyZUhfwtb3D5OgLWXYx",
-	 //     	"content-type": "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW" 
-	 //     },
-	 //  		"formData": { 
-	 //  			oauth_token: "S7LImio1bL-jYfN1zzz6z6iKmrFE95eCDH9nQodFeB2Ms2vW4UYYaBTX256MW0B52uqk1_N1w4F2FunzAR89rXa6-3L0r1TCr7bfsUKtAQtApnyZUhfwtb3D5OgLWXYx" 
-		// 	} 
+
 	};
 
 	request(options).pipe(res);
-	
+	res.send('hello world');
 
  });
 
 
+app.post("/red", function (req, res) {	
+	console.log(req.body.qs);
 
+	res.send('hello world');
+
+ });
 
 
 
