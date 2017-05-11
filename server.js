@@ -17,12 +17,12 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 //Serves the root directory relative to the directory that the express app is run from
 app.use(express.static(path.join(__dirname, "/")));
 
-app.use(function(req, res, next) {
-	res.setHeader("Access-Control-Allow-Origin", "*");
-	res.setHeader("Access-Control-Allow-Method", "*");
-	res.setHeader("Access-Control-Allow-Headers", "*");
-	return next();
-});
+// app.use(function(req, res, next) {
+// 	res.setHeader("Access-Control-Allow-Origin", "*");
+// 	res.setHeader("Access-Control-Allow-Method", "*");
+// 	res.setHeader("Access-Control-Allow-Headers", "*");
+// 	return next();
+// });
 
 app.listen(port, function () {
     console.log("The server is listening on port " + port);
