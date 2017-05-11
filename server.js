@@ -1,8 +1,7 @@
 var path = require("path");
-var bodyParser = require("body-parser");
-//var Yelp = require("yelp");
 var express = require("express");
 var request = require("request");
+var airbnb = require('airapi');
 
 
 var app = express();
@@ -51,32 +50,14 @@ app.post("/yelp", function (req, res) {
 
  });
 
-app.post("/green", function (req, res) {	
-	console.log(req.body.qs);
-	var queryURL = "https://api.airbnb.com/v2/search_results?client_id=3092nxybyb0otqw18e8nh5nty" + req.body.qs;
-	var options = { 
-		method: "GET",
-		url: queryURL,
-		headers: { 
-	 //   		//"postman-token": "d4acc441-7e71-ad84-dddb-e88e563ba45b",
-	 //     	"cache-control": "no-cache",
-	 //     	"authorization": "Bearer S7LImio1bL-jYfN1zzz6z6iKmrFE95eCDH9nQodFeB2Ms2vW4UYYaBTX256MW0B52uqk1_N1w4F2FunzAR89rXa6-3L0r1TCr7bfsUKtAQtApnyZUhfwtb3D5OgLWXYx",
-	 //     	"content-type": "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW" 
-	 //     },
-	 //  		"formData": { 
-	 //  			oauth_token: "S7LImio1bL-jYfN1zzz6z6iKmrFE95eCDH9nQodFeB2Ms2vW4UYYaBTX256MW0B52uqk1_N1w4F2FunzAR89rXa6-3L0r1TCr7bfsUKtAQtApnyZUhfwtb3D5OgLWXYx" 
-		} 
-	};
-
-	request(options).pipe(res);
-	
-
+app.post("/airbnb", function (req, res) {	
+	console.log(req.body);
+	var resObject;
+	airbnb.search(req.body).then(function(searchResults) {
+	  //console.log(searchResults);
+	 res.send(searchResults);
+	});
  });
-
-
-
-
-
 
 
 
