@@ -1,7 +1,7 @@
 var path = require("path");
 var express = require("express");
 var request = require("request");
-var airbnb = require('airapi')();
+var airbnb = require('airapi');
 
 var app = express();
 var port = process.env.PORT || 3000;
