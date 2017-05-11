@@ -17,13 +17,6 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 //Serves the root directory relative to the directory that the express app is run from
 app.use(express.static(path.join(__dirname, "/")));
 
-// app.use(function(req, res, next) {
-// 	res.setHeader("Access-Control-Allow-Origin", "*");
-// 	res.setHeader("Access-Control-Allow-Method", "*");
-// 	res.setHeader("Access-Control-Allow-Headers", "*");
-// 	return next();
-// });
-
 app.listen(port, function () {
     console.log("The server is listening on port " + port);
 });
@@ -33,12 +26,14 @@ app.get("/", function (req, res) {
     res.sendFile(__dirname + "/index.html");
 });
 
+//Yelp route can receive a json object and make the API call
+//DO NOT CHANGE!!!!!!!!!!!!!!!!!!!!!!
 app.post("/yelp", function (req, res) {	
 	console.log(req.body);
 
 	var queryURL = "https://api.yelp.com/v3/businesses/search?";
 	var options = { 
-		method: "HTTP GET",
+		method: "GET",
 		url: queryURL,
 		qs: req.body,
 		headers: { 
@@ -62,8 +57,7 @@ app.post("/green", function (req, res) {
 	var options = { 
 		method: "GET",
 		url: queryURL,
-		//qs: req.body.qs,
-		// headers: { 
+		headers: { 
 	 //   		//"postman-token": "d4acc441-7e71-ad84-dddb-e88e563ba45b",
 	 //     	"cache-control": "no-cache",
 	 //     	"authorization": "Bearer S7LImio1bL-jYfN1zzz6z6iKmrFE95eCDH9nQodFeB2Ms2vW4UYYaBTX256MW0B52uqk1_N1w4F2FunzAR89rXa6-3L0r1TCr7bfsUKtAQtApnyZUhfwtb3D5OgLWXYx",
@@ -71,14 +65,13 @@ app.post("/green", function (req, res) {
 	 //     },
 	 //  		"formData": { 
 	 //  			oauth_token: "S7LImio1bL-jYfN1zzz6z6iKmrFE95eCDH9nQodFeB2Ms2vW4UYYaBTX256MW0B52uqk1_N1w4F2FunzAR89rXa6-3L0r1TCr7bfsUKtAQtApnyZUhfwtb3D5OgLWXYx" 
-		// 	} 
+		} 
 	};
 
 	request(options).pipe(res);
 	
 
  });
-
 
 
 
