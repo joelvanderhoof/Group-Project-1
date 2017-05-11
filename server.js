@@ -53,29 +53,57 @@ app.post("/yelp", function (req, res) {
 
 app.post("/green", function (req, res) {	
 	console.log(req.body.qs);
-	var queryURL = "https://api.airbnb.com/v2/search_results?client_id=3092nxybyb0otqw18e8nh5nty" + req.body.qs;
+	// var queryURL = "https://api.airbnb.com/v2/search_results?client_id=3092nxybyb0otqw18e8nh5nty" + req.body.qs;
 	var options = { 
-		method: "GET",
-		url: queryURL,
-		headers: { 
-	 //   		//"postman-token": "d4acc441-7e71-ad84-dddb-e88e563ba45b",
-	 //     	"cache-control": "no-cache",
-	 //     	"authorization": "Bearer S7LImio1bL-jYfN1zzz6z6iKmrFE95eCDH9nQodFeB2Ms2vW4UYYaBTX256MW0B52uqk1_N1w4F2FunzAR89rXa6-3L0r1TCr7bfsUKtAQtApnyZUhfwtb3D5OgLWXYx",
-	 //     	"content-type": "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW" 
-	 //     },
-	 //  		"formData": { 
-	 //  			oauth_token: "S7LImio1bL-jYfN1zzz6z6iKmrFE95eCDH9nQodFeB2Ms2vW4UYYaBTX256MW0B52uqk1_N1w4F2FunzAR89rXa6-3L0r1TCr7bfsUKtAQtApnyZUhfwtb3D5OgLWXYx" 
-		} 
+		method: 'GET',
+		url: 'https://api.airbnb.com/v2/search_results',
+		qs: {
+			client_id: '3092nxybyb0otqw18e8nh5nty',
+			locale: 'en-US',
+			currency: 'USD',
+			_format: 'for_search_results_with_minimal_pricing',
+			_limit: '1',
+			_offset: '0',
+			fetch_facets: 'true',
+			guests: '1',
+			ib: 'false',
+			ib_add_photo_flow: 'true',
+			location: 'Lake Tahoe, CA, US',
+			min_bathrooms: '0',
+			min_bedrooms: '0',
+			min_beds: '1',
+			min_num_pic_urls: '10',
+			price_max: '210',
+			price_min: '40',
+			sort: '1',
+			user_lat: '37.3398634',
+			user_lng: '-122.0455164' 
+		},
+		headers: 
+		{ 'postman-token': '0f9e4a1c-61a3-f7bd-942e-d45a4d185887',
+		'cache-control': 'no-cache',
+		'content-type': 'application/json; charset=UTF-8' } 
 	};
 
-	request(options).pipe(res);
-	
+	request(options, function (error, response, body) {
+		if (error) throw new Error(error);
 
+		console.log(body);
+	});
+
+});
+
+
+
+app.post("/red", function (req, res) {	
+	console.log(req.body.qs);
+	res.send("/red post: hello world")
  });
 
-
-
-
+app.get("/red", function (req, res) {	
+	console.log(req.body.qs);
+	res.send("/red get: hello world")
+ });
 
 
 
