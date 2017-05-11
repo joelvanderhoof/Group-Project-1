@@ -108,8 +108,6 @@ app.post("/lodging", function (req, res) {
 	var resObject;
 	airbnb.search({
 	 location: 'Seattle, WA',
-	 checkin: '07/03/2015',
-	 checkout: '07/06/2015',
 	 guests: 2,
 	 page: 2,
 	 ib: true
