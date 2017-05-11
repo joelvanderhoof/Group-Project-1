@@ -96,12 +96,12 @@ app.post("/green", function (req, res) {
 
 
 app.post("/red", function (req, res) {	
-	console.log(req.body.qs);
+	console.log(req.body);
 	res.send("/red post: hello world")
  });
 
 app.get("/red", function (req, res) {	
-	console.log(req.body.qs);
+	console.log(req.body);
 	res.send("/red get: hello world")
  });
 
