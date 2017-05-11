@@ -20,6 +20,7 @@
 
 //var reqObject = JSON.stringify({ "term": "coffee", "latitude": "33.645068", "longitude": "-117.835098", "radius": "500"});
 
+// { "term": "coffee", "latitude": "33.645068", "longitude": "-117.835098", "radius": "500"}
 //Query Yelp
 $(".search-icon").on("click", function() {
 var searchString = $(".search-input").val();
@@ -29,7 +30,7 @@ console.log(reqObject);
 //test Yelp API call through server
 var settings = {
   // "url": "https://group-project-1.herokuapp.com/yelp",
-    "url": "https://group-project-1.herokuapp.com/",
+    "url": "https://group-project-1.herokuapp.com/yelp",
 
   "method": "POST",
   "headers": {
