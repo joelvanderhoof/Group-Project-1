@@ -1,9 +1,7 @@
 var path = require("path");
-var bodyParser = require("body-parser");
-//var Yelp = require("yelp");
 var express = require("express");
 var request = require("request");
-
+var airbnb = require('airapi')();
 
 var app = express();
 var port = process.env.PORT || 3000;
@@ -105,6 +103,22 @@ app.get("/red", function (req, res) {
 	res.send("/red get: hello world")
  });
 
+app.post("/lodging", function (req, res) {	
+	console.log(req.body);
+	var resObject;
+	airbnb.search({
+	 location: 'Seattle, WA',
+	 checkin: '07/03/2015',
+	 checkout: '07/06/2015',
+	 guests: 2,
+	 page: 2,
+	 ib: true
+	}).then(function(searchResults) {
+	  console.log(searchResults);
+	  resObject = searchResults;
+	});
+	res.send(resObject);
+ });
 
 
 

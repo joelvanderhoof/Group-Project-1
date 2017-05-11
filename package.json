@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/joelvanderhoof/Group-Project-1#readme",
   "dependencies": {
+    "airapi": "^0.1.0",
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
     "nodemon": "^1.11.0",
