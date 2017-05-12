@@ -43,15 +43,8 @@ var airReqObject = {
 	var localURL = "http://localhost:3000/";
  
  function callAPI (route, object) {
-<<<<<<< HEAD
- 	var queryURL = localURL + route;
-
-=======
  	var queryURL = herokuURL + route;
 
-function callAPI (route, object) {
-	var queryURL = "http://localhost:3000/" + route;
->>>>>>> 009d16ad5f60fcca52b9a53ea811430fa5adf567
 	//test Yelp API call through server
 	var settings = {
 	  "url": queryURL,
