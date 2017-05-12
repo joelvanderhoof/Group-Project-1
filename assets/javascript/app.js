@@ -1,14 +1,36 @@
 //Yelp Object
-var yelpReqObject = JSON.stringify({ "term": "coffee", "latitude": "33.645068", "longitude": "-117.835098", "radius": "500"});
+var yelpReqObject = { "term": "coffee", "latitude": "33.645068", "longitude": "-117.835098", "radius": "500"};
+
+//Possible Airbnb search options:
+	// {
+	//   checkin: {String}, e.g: '04/30/2015'
+	//   checkout: {String},
+	//   guests: {Number},
+	//   page: {Number},
+	//   location: {String}, e.g: 'New York, NY' or 'Seattle, WA'
+	//   price_min: {Number},
+	//   price_max: {Number},
+	//   min_bedrooms: {Number},
+	//   min_bathrooms: {Number},
+	//   min_beds: {Number},
+	//   superhost: {Boolean},
+	//   hosting_amenities: {Array of id}, e.g: [1,4]
+	//   property_type_id: {Array of id}, e.g: [1]
+	//   languages: {Array of id}, e.g: [1,64]
+	//   keywords: {String}, e.g: 'ocean,view,balcony'
+	//   room_types: {Array}, e.g: ['Entire home/apt', 'Private room', 'Shared room']
+	//   ib: {Boolean}, instant-book
+	//   neighborhoods: {Array}, e.g: ['Belltown', 'Queen Anne']
+	// }
 
 
 // Airbnb Object
-var airReqObject = JSON.stringify({
+var airReqObject = {
 	 location: 'Seattle, WA',
 	 guests: 2,
 	 page: 2,
 	 ib: true
-	});
+	};
 
 //Use these strings for the routes: yelp, airbnb
 
@@ -31,7 +53,7 @@ function callAPI (route, object) {
 	  "data": object
 	}
 
-	console.log(object);
+	console.log(route + " query parameter object:" + object);
 
 	$.ajax(settings).done(function (response) {
 	  console.log(route + " api response object:");
@@ -40,4 +62,20 @@ function callAPI (route, object) {
 }
 
 callAPI("yelp", yelpReqObject);
-callAPI("airbnb", airReqObject);
+
+
+// Capture string for airbnb location
+var clicks = 0;
+$(".search-icon").on("click", function() {
+	if (clicks < 1) {
+		clicks++;
+	} else {
+		//Call airbnb with input location
+		airReqObject.location = $(".search-input").val();
+		airReqObject = JSON.stringify(airReqObject);
+		console.log(airReqObject);
+		callAPI("airbnb", airReqObject);
+
+		//call yelp with the location of the first response object lat/long
+	}
+});
