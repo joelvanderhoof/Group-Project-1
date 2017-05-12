@@ -35,8 +35,8 @@
   	<form onsubmit="submitFn(this, event);">
         <div class="search-wrapper">
         <div class="input-holder">
-            <input type="text" class="search-input" placeholder="search city, zip or place" />
-                <button class="search-icon" onclick="searchToggle(this, event);">
+            <input id="searching" type="text" class="search-input" placeholder="search city, zip or place" />
+                <button id="search-button" class="search-icon" data-click="false" onclick="searchToggle(this, event);">
                 <span></span></button>
         </div>
         <span class="close" onclick="searchToggle(this, event);"></span>
@@ -50,7 +50,7 @@
 <div id="restaurant-info" class="text-center" style="color: #777;background-color:white;text-align:center;padding:50px 80px;">
   <h3 style="text-align:center;">Select Some Filters</h3>
 
-  <div class="row">
+  <div id="filter-div" class="row">
 
     <!-- Price Buttons -->
 
@@ -106,7 +106,7 @@
 
 
   <div class="row">
-    <button class="btn btn-primary-outline btn-lg enter-button hvr-shutter-out-horizontal" data-toggle="collapse" data-target="#takeout-div" type="submit">SUBMIT</button>
+    <button id="submit-filter" class="btn btn-primary-outline btn-lg enter-button hvr-shutter-out-horizontal" data-toggle="collapse" data-target="#takeout-div" type="submit">SUBMIT</button>
   </div>
 
 

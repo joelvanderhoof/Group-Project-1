@@ -36,3 +36,42 @@ $(obj).find('.result-container').fadeIn(100);
 $('button[type="submit"]').click(function(){
   $(this).toggleClass('grey');
 });
+
+// Page Jump
+
+$(document).ready(function() {
+
+  $("#searching").keyup(function (e){
+
+    console.log(e); 
+    if(e.keyCode == 13){
+
+      $("body, html").animate({ 
+      scrollTop: $("#filter-div").offset().top -150
+    }, 600);
+
+    }
+  }); 
+
+  $("#search-button").on("click", function( e ) {
+
+    e.preventDefault();
+    
+
+    var expand = $("#search-button").attr("data-click") == 'true';
+
+    if (expand) {
+        $("body, html").animate({ 
+      scrollTop: $("#filter-div").offset().top -150
+    }, 600);
+    }
+    $("#search-button").attr("data-click",!expand);
+
+   
+
+  
+
+
+
+  });
+});
