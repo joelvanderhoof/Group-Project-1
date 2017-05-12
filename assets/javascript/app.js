@@ -54,7 +54,7 @@ function callAPI (route, object) {
 	});
 }
 
-callAPI("yelp", yelpReqObject);
+//callAPI("yelp", yelpReqObject);
 
 
 // Capture string for airbnb location
