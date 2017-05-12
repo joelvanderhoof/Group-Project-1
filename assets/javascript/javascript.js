@@ -68,6 +68,7 @@ $(document).ready(function() {
     $("#search-button").attr("data-click",!expand);
 
    
+    
 
   
 
@@ -75,3 +76,14 @@ $(document).ready(function() {
 
   });
 });
+
+// Second Page Jump
+
+   
+// $("#submit-filter").on("click", function( e ) {
+
+//     e.preventDefault();
+  
+//      $("body, html").animate({ 
+//       scrollTop: $("#results-div").offset().top -150
+//     }, 600);
