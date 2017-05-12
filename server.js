@@ -1,3 +1,4 @@
+
 var path = require("path");
 var express = require("express");
 var request = require("request");
@@ -50,8 +51,6 @@ app.post("/yelp", function (req, res) {
 
  });
 
-//Airbnb route can receive a json object and make the API call
-//DO NOT CHANGE!!!!!!!!!!!!!!!!!!!!!!
 app.post("/airbnb", function (req, res) {	
 	console.log(req.body);
 	var resObject;
@@ -60,7 +59,3 @@ app.post("/airbnb", function (req, res) {
 	 res.send(searchResults);
 	});
  });
-
-
-
-
