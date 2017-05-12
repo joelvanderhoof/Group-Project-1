@@ -35,7 +35,7 @@ var airReqObject = {
 //Routes: yelp, airbnb
 
 function callAPI (route, object) {
-	var queryURL = "http://localhost:3000/" + route;
+	var queryURL = "https://group-project-1.herokuapp.com/" + route;
 	//test Yelp API call through server
 	var settings = {
 	  "url": queryURL,
