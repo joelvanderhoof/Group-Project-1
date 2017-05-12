@@ -1,6 +1,6 @@
 //Yelp Object
 var yelpReqObject = { "term": "coffee", "latitude": "33.645068", "longitude": "-117.835098", "radius": "500"};
-
+var yelpResObject;
 //Possible Airbnb search options:
 	// {
 	//   checkin: {String}, e.g: '04/30/2015'
@@ -31,7 +31,7 @@ var airReqObject = {
 	 page: 2,
 	 ib: true
 	};
-
+var airResObject;
 //Routes: yelp, airbnb
 
 //Use these strings for the routes: yelp, airbnb
@@ -42,8 +42,8 @@ var airReqObject = {
  	//local: 
 	var localURL = "http://localhost:3000/";
  
- function callAPI (route, object) {
- 	var queryURL = herokuURL + route;
+function callAirbnb () {
+ 	var queryURL = localURL + "airbnb";
 
 	//test Yelp API call through server
 	var settings = {
@@ -52,18 +52,51 @@ var airReqObject = {
 	  "headers": {
 	    "content-type": "application/json; charset=UTF-8",
 	  },
-	  "data": object
+	  "data": airReqObject
 	}
 
-	console.log(route + " query parameter object:" + object);
+	console.log("airbnb query parameter object:" + airReqObject);
 
 	$.ajax(settings).done(function (response) {
-	  console.log(route + " api response object:");
-	  console.log(response);
+	  console.log("airbnb api response object:");
+	  //console.log(response);
+	  airResObject = response;
+	  console.log(typeof airResObject);
+	  console.log(airResObject);
 	});
 };
 
-//callAPI("yelp", yelpReqObject);
+function callYelp () {
+ 	var queryURL = localURL + "yelp";
+
+ 	//update yelpReqObject with the lat/long of the airbnb listing
+ 	yelpReqObject.latitude = airResObject.results_json.search_results[0].listing.lat;
+	yelpReqObject.longitude = airResObject.results_json.search_results[0].listing.lng;
+	yelpReqObject = JSON.stringify(yelpReqObject);
+	console.log("this is the yelp request object:")
+	console.log(yelpReqObject);
+
+	//test Yelp API call through server
+	var settings = {
+	  "url": queryURL,
+	  "method": "POST",
+	  "headers": {
+	    "content-type": "application/json; charset=UTF-8",
+	  },
+	  "data": yelpReqObject
+	}
+
+	console.log("yelp query parameter object:" + yelpReqObject);
+
+	$.ajax(settings).done(function (response) {
+	  console.log("yelp api response object:");
+	  //console.log(response);
+	  airResObject = response;
+	  console.log(typeof airResObject);
+	  console.log(airResObject);
+	});
+};
+
 
 
 // Capture string for airbnb location
@@ -71,13 +104,21 @@ var clicks = 0;
 $(".search-icon").on("click", function() {
 	if (clicks < 1) {
 		clicks++;
-	} else {
+	} else if (clicks < 2) {
+		clicks++;
 		//Call airbnb with input location
 		airReqObject.location = $(".search-input").val();
 		airReqObject = JSON.stringify(airReqObject);
 		console.log(airReqObject);
-		callAPI("airbnb", airReqObject);
-
-		//call yelp with the location of the first response object lat/long
+		callAirbnb();
+		
+	} else {
+		callYelp();
 	}
 });
+
+$(".lodging").on("click", function() {
+	callYelp();
+});
+
+
