@@ -43,7 +43,7 @@ var airResObject;
 	var localURL = "http://localhost:3000/";
  
 function callAirbnb () {
- 	var queryURL = localURL + "airbnb";
+ 	var queryURL = herokuURL + "airbnb";
 
 	//test Yelp API call through server
 	var settings = {
@@ -67,7 +67,7 @@ function callAirbnb () {
 };
 
 function callYelp () {
- 	var queryURL = localURL + "yelp";
+ 	var queryURL = herokuURL + "yelp";
 
  	//update yelpReqObject with the lat/long of the airbnb listing
  	yelpReqObject.latitude = airResObject.results_json.search_results[0].listing.lat;
