@@ -31,21 +31,48 @@ var airReqObject = {
 	 page: 2,
 	 ib: true
 	};
+
 var airResObject;
-//Routes: yelp, airbnb
+var imgListArr;
+var yelpResObject
+ //URLs for switching between test and production environments
+ var herokuURL = "https://group-project-1.herokuapp.com/";
+ var localURL = "http://localhost:3000/";
 
-//Use these strings for the routes: yelp, airbnb
 
- //URLs
- 	//heroku: https://group-project-1.herokuapp.com/
- 	var herokuURL = "https://group-project-1.herokuapp.com/";
- 	//local: 
-	var localURL = "http://localhost:3000/";
+//-------------------------------------------------------------
+
+//create array of images from airResObject
+function buildImgDisplay() {
+	  for(var i = 0; i < 4; i++){
+	  imgListArr = airResObject.results_json.search_results[i].listing.picture_urls[i];
+	  imgListName = airResObject.results_json.search_results[i].listing.name;
+
+	  //modal information
+	  imgListBedroom = airResObject.results_json.search_results[0].listing.bedrooms;
+	  imgListRate = airResObject.results_json.search_results[0].pricing_quote.rate_type;
+	  imgListGuestNo = airResObject.results_json.search_results[0].listing.person_capacity;
+	  imgListRating = airResObject.results_json.search_results[0].listing.star_rating;
+
+    //create and append div tags containing img tags for airbnb images
+	  var listings = $('<div>').addClass('listing-div')
+	  listings.attr('list-number', i);
+	  var listingInfo = $('<p>').text(imgListName)
+	  var listingImg = $('<img>').attr('src', imgListArr)
+	  listingImg.addClass('listImg');
+	  listings.append(listingInfo);
+	  listings.append(listingImg);
+	  $('.bgimg-3').append(listings);
+	  }
+};
  
+//-------------------------------------------------------------
+
+//Call Airbnb API
 function callAirbnb () {
  	var queryURL = herokuURL + "airbnb";
 
-	//test Yelp API call through server
+	//Airbnb route API call settings
 	var settings = {
 	  "url": queryURL,
 	  "method": "POST",
@@ -56,15 +83,19 @@ function callAirbnb () {
 	}
 
 	console.log("airbnb query parameter object:" + airReqObject);
-
+  
+  //make the call
 	$.ajax(settings).done(function (response) {
 	  console.log("airbnb api response object:");
 	  //console.log(response);
 	  airResObject = response;
 	  console.log(typeof airResObject);
 	  console.log(airResObject);
+    buildImgDisplay();
 	});
 };
+
+//-----------------------------------------------------
 
 function callYelp () {
  	var queryURL = herokuURL + "yelp";
@@ -95,9 +126,8 @@ function callYelp () {
 	  console.log(typeof airResObject);
 	  console.log(airResObject);
 	});
+
 };
-
-
 
 // Capture string for airbnb location
 var clicks = 0;
@@ -120,5 +150,6 @@ $(".search-icon").on("click", function() {
 $(".lodging").on("click", function() {
 	callYelp();
 });
+
 
 

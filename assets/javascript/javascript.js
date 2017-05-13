@@ -1,4 +1,4 @@
-function searchToggle(obj, evt){
+  function searchToggle(obj, evt){
   var container = $(obj).closest('.search-wrapper');
 
   if(!container.hasClass('active')){
@@ -36,3 +36,11 @@ $(obj).find('.result-container').fadeIn(100);
 $('button[type="submit"]').click(function(){
   $(this).toggleClass('grey');
 });
+
+
+$(document).on('click', '.bgimg-3, .listing-div', function(){
+
+  var listingModal = $(this).attr('list-number')
+  console.log(listingModal);
+
+})
