@@ -67,23 +67,29 @@ $(document).ready(function() {
     }
     $("#search-button").attr("data-click",!expand);
 
-   
-    
 
-  
 
 
 
   });
+
+   $("#submit-filter").on("click", function( e ) {
+
+    e.preventDefault();
+  
+     $("body, html").animate({ 
+      scrollTop: $("#results-div").offset().top -150
+    }, 600);
+
+   }); 
+
 });
 
-// Second Page Jump
 
-   
-// $("#submit-filter").on("click", function( e ) {
-
-//     e.preventDefault();
   
-//      $("body, html").animate({ 
-//       scrollTop: $("#results-div").offset().top -150
-//     }, 600);
+
+
+
+
+
+
