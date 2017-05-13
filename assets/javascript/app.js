@@ -40,13 +40,13 @@ var yelpResObject
  var localURL = "http://localhost:3000/";
 
 //Set api call location for test/production
- var apiCallURL = herokuURL;
+ var apiCallURL = localURL;
 
 
 //-------------------------------------------------------------
 
 //create array of images from airResObject
-function buildImgDisplay() {
+function   buildImgDisplay() {
 	  for(var i = 0; i < 4; i++){
 	  imgListArr = airResObject.results_json.search_results[i].listing.picture_urls[i];
 	  imgListName = airResObject.results_json.search_results[i].listing.name;
@@ -73,14 +73,16 @@ function buildImgDisplay() {
 //Build the Yelp request object
 
 //set the location of the yelp to the listing selected
-$(".listing-div").on("click", function() {
-	var listingIndex = this.val("list-number");
+$(document).on("click", ".listing-div", function() {
+	var listingIndex = $(this).val("list-number");
 	console.log("listingIndex: " + listingIndex);
 
 
 	//update yelpReqObject with the lat/long of the airbnb listing
 	yelpReqObject.latitude = airResObject.results_json.search_results[listingIndex].listing.lat;
 	yelpReqObject.longitude = airResObject.results_json.search_results[listingIndex].listing.lng;
+	console.log(yelpReqObject.latitude);
+	console.log(yelpReqObject.longitude);
 });
 
 //update yelpReqObject with an activity from "Things To Do"
@@ -124,7 +126,7 @@ function callAirbnb () {
 	  airResObject = response;
 	  console.log(typeof airResObject);
 	  console.log(airResObject);
-    buildImgDisplay();
+      buildImgDisplay();
 	});
 };
 
@@ -148,12 +150,15 @@ function callYelp () {
 	$.ajax(settings).done(function (response) {
 	  console.log("yelp api response object:");
 	  //console.log(response);
-	  airResObject = response;
-	  console.log(typeof airResObject);
-	  console.log(airResObject);
+	  yelpResObject = response;
+	  console.log(typeof yelpResObject);
+	  console.log(yelpResObject);
+	  buildYelpDisplay();
 	});
 
 };
+
+//------------------------------------------------------
 
 // Capture string for airbnb location
 var clicks = 0;
@@ -171,6 +176,30 @@ $(".search-icon").on("click", function() {
 	}
 });
 
+//-------------------------------------------------------------
 
+//create array of images from airResObject
+function buildYelpDisplay() {
+	  for(var i = 0; i < 4; i++){
+	  imgListArr = yelpResObject.businesses[i].image_url;
+	  imgListName = yelpResObject.businesses[i].name;
+
+	  //modal information
+	  imgListLocation = yelpResObject.businesses[i].coordinates;
+	  imgListRate = yelpResObject.businesses[i].rating;
+	  imgListGuestNo = yelpResObject.businesses[i].price;
+	  imgListRating = yelpResObject.businesses[i].review_count;
+
+    //create and append div tags containing img tags for airbnb images
+	  var activity = $('<div>').addClass('listing-div')
+	  activity.attr('list-number', i);
+	  var activityInfo = $('<p>').text(imgListName)
+	  var activityImg = $('<img>').attr('src', imgListArr)
+	  activityImg.addClass('listImg');
+	  activity.append(activityInfo);
+	  activity.append(activityImg);
+	  $('.bgimg-2').append(activity);
+	  }
+};
 
 
