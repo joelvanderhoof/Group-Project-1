@@ -83,6 +83,8 @@ $(document).on("click", ".listing-div", function() {
 	yelpReqObject.longitude = airResObject.results_json.search_results[listingIndex].listing.lng;
 	console.log(yelpReqObject.latitude);
 	console.log(yelpReqObject.longitude);
+
+
 });
 
 //update yelpReqObject with an activity from "Things To Do"
