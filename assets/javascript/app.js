@@ -39,6 +39,9 @@ var yelpResObject
  var herokuURL = "https://group-project-1.herokuapp.com/";
  var localURL = "http://localhost:3000/";
 
+//Set api call location for test/production
+ var apiCallURL = localURL;
+
 
 //-------------------------------------------------------------
 
@@ -65,12 +68,42 @@ function buildImgDisplay() {
 	  $('.bgimg-3').append(listings);
 	  }
 };
+
+//------------------------------------------------------------
+//Build the Yelp request object
+
+//set the location of the yelp to the listing selected
+$(".listing-div").on("click", function() {
+	var listingIndex = this.val("list-number");
+	console.log("listingIndex: " + listingIndex);
+
+
+	//update yelpReqObject with the lat/long of the airbnb listing
+	yelpReqObject.latitude = airResObject.results_json.search_results[listingIndex].listing.lat;
+	yelpReqObject.longitude = airResObject.results_json.search_results[listingIndex].listing.lng;
+});
+
+//update yelpReqObject with an activity from "Things To Do"
+$(document).on("click", ".select-activity", function() {
+	yelpReqObject.term = $(this).val();
+	yelpReqObject = JSON.stringify(yelpReqObject);
+	console.log("this is the yelp request object:")
+	console.log(yelpReqObject);
+});
+
+//call the airbnb api on submit
+$(document).on("click", "#SUBMIT", function() {
+	callYelp();
+});
+
+	
+
  
 //-------------------------------------------------------------
 
 //Call Airbnb API
 function callAirbnb () {
- 	var queryURL = herokuURL + "airbnb";
+ 	var queryURL = apiCallURL + "airbnb";
 
 	//Airbnb route API call settings
 	var settings = {
@@ -98,14 +131,7 @@ function callAirbnb () {
 //-----------------------------------------------------
 
 function callYelp () {
- 	var queryURL = herokuURL + "yelp";
-
- 	//update yelpReqObject with the lat/long of the airbnb listing
- 	yelpReqObject.latitude = airResObject.results_json.search_results[0].listing.lat;
-	yelpReqObject.longitude = airResObject.results_json.search_results[0].listing.lng;
-	yelpReqObject = JSON.stringify(yelpReqObject);
-	console.log("this is the yelp request object:")
-	console.log(yelpReqObject);
+ 	var queryURL = apiCallURL + "yelp";
 
 	//test Yelp API call through server
 	var settings = {
@@ -134,7 +160,7 @@ var clicks = 0;
 $(".search-icon").on("click", function() {
 	if (clicks < 1) {
 		clicks++;
-	} else if (clicks < 2) {
+	} else if (clicks === 1) {
 		clicks++;
 		//Call airbnb with input location
 		airReqObject.location = $(".search-input").val();
@@ -142,14 +168,9 @@ $(".search-icon").on("click", function() {
 		console.log(airReqObject);
 		callAirbnb();
 		
-	} else {
-		callYelp();
 	}
 });
 
-$(".lodging").on("click", function() {
-	callYelp();
-});
 
 
 
