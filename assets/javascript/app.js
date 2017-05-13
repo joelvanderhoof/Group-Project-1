@@ -1,5 +1,5 @@
 //Yelp Object
-var yelpReqObject = { "term": "coffee", "latitude": "33.645068", "longitude": "-117.835098", "radius": "500"};
+var yelpReqObject = { "term": "coffee", "latitude": "33.645068", "longitude": "-117.835098", "radius": "1000"};
 var yelpResObject;
 //Possible Airbnb search options:
 	// {
@@ -40,7 +40,7 @@ var yelpResObject
  var localURL = "http://localhost:3000/";
 
 //Set api call location for test/production
- var apiCallURL = herokuURL;
+ var apiCallURL = localURL;
 
 
 //-------------------------------------------------------------
