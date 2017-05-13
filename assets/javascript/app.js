@@ -32,15 +32,18 @@ var airReqObject = {
 	 ib: true
 	};
 
+var responseObject;
+var imgListArr;
+
 //Routes: yelp, airbnb
 
 //Use these strings for the routes: yelp, airbnb
 
  //URLs
- 	//heroku: https://group-project-1.herokuapp.com/
- 	var herokuURL = "https://group-project-1.herokuapp.com/";
- 	//local: 
-	var localURL = "http://localhost:3000/";
+ //heroku: https://group-project-1.herokuapp.com/
+ var herokuURL = "https://group-project-1.herokuapp.com/";
+ //local: 
+ var localURL = "http://localhost:3000/";
  
  function callAPI (route, object) {
  	var queryURL = herokuURL + route;
@@ -57,11 +60,37 @@ var airReqObject = {
 
 	console.log(route + " query parameter object:" + object);
 
-	$.ajax(settings).done(function (response) {
+
+	  $.ajax(settings).done(function (response) {
 	  console.log(route + " api response object:");
-	  console.log(response);
+	  responseObject = response;
+	  console.log(responseObject);
+
+	  for(var i = 0; i < 4; i++){
+	  imgListArr = responseObject.results_json.search_results[i].listing.picture_urls[i];
+	  imgListName = responseObject.results_json.search_results[i].listing.name;
+
+	  //modal information
+	  imgListBedroom = responseObject.results_json.search_results[0].listing.bedrooms;
+	  imgListRate = responseObject.results_json.search_results[0].pricing_quote.rate_type;
+	  imgListGuestNo = responseObject.results_json.search_results[0].listing.person_capacity;
+	  imgListRating = responseObject.results_json.search_results[0].listing.star_rating;
+
+
+	  var listings = $('<div>').addClass('listing-div')
+	  listings.attr('list-number', i);
+	  var listingInfo = $('<p>').text(imgListName)
+	  var listingImg = $('<img>').attr('src', imgListArr)
+	  listingImg.addClass('listImg');
+	  listings.append(listingInfo);
+	  listings.append(listingImg);
+	  $('.bgimg-3').append(listings);
+	  }
+
 	});
+
 };
+
 
 //callAPI("yelp", yelpReqObject);
 
@@ -78,6 +107,23 @@ $(".search-icon").on("click", function() {
 		console.log(airReqObject);
 		callAPI("airbnb", airReqObject);
 
-		//call yelp with the location of the first response object lat/long
+	  //call yelp with the location of the first response object lat/long
 	}
-});
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
