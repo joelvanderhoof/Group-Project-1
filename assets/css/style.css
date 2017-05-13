@@ -7,31 +7,26 @@ body, html {
 
 .bgimg-1, .bgimg-2, .bgimg-3 {
   position: relative;
-  /*s*/
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-
 }
 
 .bgimg-1 {
-  /*background-image: url("../images/background/pizza.jpg");*/
+  /*background-image: url("../images/background/interior.jpg");*/
   min-height: 100%;
 }
 
-.bgimg-2 {
-  /*background-image: url("../images/background/hotpot.jpg");*/
-  min-height: 400px;
-}
 
-.col-md-12 {
-  height: 40vh;
+.bgimg-2 {
+  background-image: url("../images/background/beach.jpg");
+  min-height: 400px;
 }
 
 
 .bgimg-3 {
-  /*background-image: url("../images/background/sushi.jpg");*/
+  background-image: url("../images/background/interior.jpg");
   min-height: 400px;
 }
 
@@ -43,6 +38,11 @@ body, html {
 .listing-div {
   float: left;
   margin-left: 10vh;
+  margin-top: 25px;
+  background-color: black;
+  color: white;
+  height: 350px;
+  width: 300px;
 }
 
 
