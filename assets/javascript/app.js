@@ -40,7 +40,7 @@ var yelpResObject
  var localURL = "http://localhost:3000/";
 
 //Set api call location for test/production
- var apiCallURL = localURL;
+ var apiCallURL = herokuURL;
 
 
 //-------------------------------------------------------------
@@ -74,7 +74,7 @@ function   buildImgDisplay() {
 
 //set the location of the yelp to the listing selected
 $(document).on("click", ".listing-div", function() {
-	var listingIndex = $(this).val("list-number");
+	var listingIndex = $(this).attr("list-number");
 	console.log("listingIndex: " + listingIndex);
 
 
