@@ -40,7 +40,7 @@
         <div class="search-wrapper">
         <div class="input-holder">
             <input id="searching" type="text" class="search-input" placeholder="search city, zip or place" />
-                <button class="search-icon" onclick="searchToggle(this, event);">
+                <button id="search-button" class="search-icon" onclick="searchToggle(this, event);">
                 <span></span></button>
         </div>
         <span class="close" onclick="searchToggle(this, event);"></span>
@@ -51,14 +51,14 @@
  </div>
 </div>
 
-<div style="position:relative;">
+<div id="restaurant-info" style="position:relative;">
   <div style="color:#ddd;background-color:#282E34;text-align:center;padding:50px 80px;text-align: justify;">
     <h3 style="text-align:center;color:white">PLACES TO STAY</h3>
   </div>
 </div>
 <div class="bgimg-3"></div>
 
-<div id="restaurant-info" class="text-center" style="color: #777;background-color:white;text-align:center;padding:50px 80px;">
+<div class="text-center" style="color: #777;background-color:white;text-align:center;padding:50px 80px;">
   <h3 style="text-align:center;">Select Things To Do</h3>
 
   <div id="filter-div" class="row">
