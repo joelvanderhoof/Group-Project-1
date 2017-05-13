@@ -40,7 +40,7 @@ var yelpResObject
  var localURL = "http://localhost:3000/";
 
 //Set api call location for test/production
- var apiCallURL = localURL;
+ var apiCallURL = herokuURL;
 
 
 //-------------------------------------------------------------
