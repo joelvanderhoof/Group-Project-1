@@ -52,10 +52,10 @@ function   buildImgDisplay() {
 	  imgListName = airResObject.results_json.search_results[i].listing.name;
 
 	  //modal information
-	  imgListBedroom = airResObject.results_json.search_results[0].listing.bedrooms;
-	  imgListRate = airResObject.results_json.search_results[0].pricing_quote.rate_type;
-	  imgListGuestNo = airResObject.results_json.search_results[0].listing.person_capacity;
-	  imgListRating = airResObject.results_json.search_results[0].listing.star_rating;
+	  imgListBedroom = airResObject.results_json.search_results[i].listing.bedrooms;
+	  imgListRate = airResObject.results_json.search_results[i].pricing_quote.rate_type;
+	  imgListGuestNo = airResObject.results_json.search_results[i].listing.person_capacity;
+	  imgListRating = airResObject.results_json.search_results[i].listing.star_rating;
 
     //create and append div tags containing img tags for airbnb images
 	  var listings = $('<div>').addClass('listing-div')
@@ -83,6 +83,8 @@ $(document).on("click", ".listing-div", function() {
 	yelpReqObject.longitude = airResObject.results_json.search_results[listingIndex].listing.lng;
 	console.log(yelpReqObject.latitude);
 	console.log(yelpReqObject.longitude);
+
+
 });
 
 //update yelpReqObject with an activity from "Things To Do"

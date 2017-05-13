@@ -5,6 +5,12 @@ body, html {
   color: #777;
 }
 
+#logo-img {
+  height: 100px;
+  width: 500px;
+  margin-bottom: 30vh;
+}
+
 .bgimg-1, .bgimg-2, .bgimg-3 {
   position: relative;
   background-attachment: fixed;
@@ -14,7 +20,7 @@ body, html {
 }
 
 .bgimg-1 {
-  /*background-image: url("../images/background/interior.jpg");*/
+  background-image: url("../images/background/bg.jpg");
   min-height: 100%;
 }
 
@@ -43,6 +49,7 @@ body, html {
   color: white;
   height: 350px;
   width: 300px;
+  border-radius: 5px;
 }
 
 
